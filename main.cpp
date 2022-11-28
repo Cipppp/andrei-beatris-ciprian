@@ -2,24 +2,24 @@
 
 class Student
 {
-    private:
-        int id;
-        std::string name;
-        std::vector<double> grades;
-        double average;
+private:
+    int id;
+    std::string name;
+    std::vector<double> grades;
+    double average;
 
-    public:
-        Student(int id, std::string name, std::vector<double> grades);
+public:
+    Student(int id, std::string name, std::vector<double> grades);
 
-        int getId();
-        std::string getName();
-        std::vector<double> getGrades();
-        double getAverage();
-        
-        void calculateAverage(); // TODO: implement this function
-        bool hasFailed();
+    int getId();
+    std::string getName();
+    std::vector<double> getGrades();
+    double getAverage();
 
-        friend std::ostream& operator<<(std::ostream& out, const Student& student);
+    void calculateAverage(); // TODO: implement this function
+    bool hasFailed();
+
+    friend std::ostream &operator<<(std::ostream &out, const Student &student);
 };
 
 Student::Student(int id, std::string name, std::vector<double> grades)
@@ -54,16 +54,19 @@ bool Student::hasFailed()
     return this->average > 5.0;
 }
 
-std::ostream& operator<<(std::ostream& out, const Student& student)
+std::ostream &operator<<(std::ostream &out, const Student &student)
 {
-    out << "ID: " << student.id << "\n" << "Name: " << student.name << "\n" << "Grades: [ ";
+    out << "ID: " << student.id << "\n"
+        << "Name: " << student.name << "\n"
+        << "Grades: [ ";
 
-    for(double i : student.grades)
+    for (double i : student.grades)
     {
         out << i << " ";
     }
 
-    out << "]\n" << "Average: " << student.average << "\n";
+    out << "]\n"
+        << "Average: " << student.average << "\n";
 
     return out;
 }
@@ -75,6 +78,6 @@ int main(void)
     acs.printPassingStudents();
     acs.printFailingStudents();
     std::cout << acs;
-    
+
     return 0;
 }
